@@ -19,11 +19,9 @@ LIB.GetKdstoreByWpssid("V02STM1ligb43rsiOc7StUsChFaOj-I00aced2b5003d18ab1d").the
   let f2 = fs.createReadStream(p2);
   cStream.append(f1).append(f2);
   let otest3 = await kd.POST_WPSFILE_KSYUN(cStream, combinedSize, "multipart/related", Math.random() + ".mht", 0)
-  otest3.data.ev.on("error", (args) => {
-    debugger
-  })
-  otest3.data.ev.on("ok", (args) => {
-    debugger
-  })
+  debugger
+  let o_test = await kd.APIV5_files_file_asNewFile(otest3.data.etag,otest3.data.key,
+      Math.random() + ".mht",
+      otest3.data.newfilename_sha1,combinedSize,0);
   debugger
 })
