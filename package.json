@@ -1,0 +1,27 @@
+{
+  "name": "lib-kdstore2021",
+  "version": "0.0.1alpha",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "args": "^5.0.1",
+    "axios": "^0.19.0",
+    "combined-stream": "^1.0.8",
+    "form-data": "^2.5.1",
+    "glob": "^7.1.6",
+    "kuroshiro": "^1.1.2",
+    "lodash.union": "^4.6.0",
+    "pinyin": "^2.9.1",
+    "promise-queue": "^2.2.5",
+    "random-number": "^0.0.9",
+    "randomstring": "^1.1.5",
+    "run-parallel-limit": "^1.0.5",
+    "set-cookie-parser": "^2.4.0",
+    "xlsx": "^0.16.3"
+  }
+}
