@@ -1,4 +1,5 @@
 const xpath = require("xpath");
+const setCookieParser = require("set-cookie-parser");
 const DOMParser = require("xmldom").DOMParser;
 let domParser = new DOMParser();
 const axios = require("axios").default.create({
@@ -10,9 +11,14 @@ const rn = require("random-number");
 const CommonAHG = require("../CommonAxerrHandlerGenerator").CommonAxerrHandlerGen;
 const axiosGetContent = require("./get_html_content");
 const BingganPool = {
-  ccks: [],
+  ccks: {},
   get cookies_as_header() {
-    return this.ccks.join(",")
+    let arr = [];
+    for(let h in this.ccks){
+      // debugger
+      arr.push(`${h}=${this.ccks[h]}`)
+    }
+    return arr.join("; ")
   }
 }
 
@@ -42,9 +48,21 @@ function indexAjaxFeed(page = 1) {
       },
       headers: {
         'x-requested-with': 'XMLHttpRequest',
-        referer: 'https://m.soyoung.com/?cityId=218&cityName=%E8%B5%A3%E5%B7%9E%E5%B8%82'
+        referer: 'https://m.soyoung.com/?cityId=218&cityName=%E8%B5%A3%E5%B7%9E%E5%B8%82',
+        cookie:BingganPool.cookies_as_header
       }
     }).then(axresp => {
+      if (axresp.headers && axresp.headers["set-cookie"]) {
+        let parsed = setCookieParser.parse(axresp.headers['set-cookie']);
+        if (parsed && parsed.length) {
+          let hasValue = parsed.filter(e => !!e.value);
+          hasValue.forEach(e=>{
+           BingganPool.ccks[e.name]=e.value
+          })
+        }
+        BingganPool.cookies_as_header
+        // debugger
+      }
       // debugger
       if (axresp.data.feed_list) {
         return resolve({
@@ -87,21 +105,21 @@ function getContent() {
     }
     let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);
     let nodes = xpath.select('//*[@id="contentBox"]', doc);
-    if(!nodes.length){
+    if (!nodes.length) {
       return resolve({
         ok: false,
         msg: `xpath select fail`
       })
     }
     let ctts = [];
-    let images_tag = item.data.img_list.map(e=>`<img src="${e.u_z}">`).join("\n<br>");
+    let images_tag = item.data.img_list.map(e => `<img src="${e.u_z}">`).join("\n<br>");
     ctts.push(images_tag);
     ctts.push(nodes[0].toString());
     return resolve({
-      ok:true,
-      msg:"ok",
-      data:{
-        content:ctts.join("\n<br>")
+      ok: true,
+      msg: "ok",
+      data: {
+        content: ctts.join("\n<br>")
       }
     })
     debugger
