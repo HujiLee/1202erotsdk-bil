@@ -120,7 +120,7 @@ function getContent() {
       })
     }
     let ctts = [];
-    let images_tag = `<img src="${item.image}">`
+    let images_tag = `<img src="${item.image.replace("https://","http://")}">`
     ctts.push(`<h2>${item.title}</h2>`);
     ctts.push(images_tag);
     ctts.push(nodes[0].textContent);

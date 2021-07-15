@@ -112,7 +112,7 @@ function getContent() {
       })
     }
     let ctts = [];
-    let images_tag = item.data.img_list.map(e => `<img src="${e.u_z}">`).join("\n<br>");
+    let images_tag = item.data.img_list.map(e => `<img src="${e.u_z.replace("https://","http://")}">`).join("\n<br>");
     ctts.push(images_tag);
     ctts.push(nodes[0].toString());
     return resolve({
