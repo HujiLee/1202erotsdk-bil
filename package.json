@@ -22,6 +22,8 @@
     "randomstring": "^1.1.5",
     "run-parallel-limit": "^1.0.5",
     "set-cookie-parser": "^2.4.0",
-    "xlsx": "^0.16.3"
+    "xlsx": "^0.16.3",
+    "xmldom": "^0.6.0",
+    "xpath": "^0.0.32"
   }
 }
