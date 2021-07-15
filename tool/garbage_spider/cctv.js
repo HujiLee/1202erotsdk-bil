@@ -101,7 +101,7 @@ function getContent() {
         msg: `get feed list fail:${o_feed.msg}`
       })
     }
-    let item = o_feed.data.feed_list[rn({integer:true,min:0,max:o_feed.data.feed_list.length-1})];
+    let item = o_feed.data.feed_list[rn({ integer: true, min: 0, max: o_feed.data.feed_list.length - 1 })];
     debugger
     let link = item.url;
     let o_HTML_TEXT_RAW = await axiosGetContent(axios, link);
@@ -111,26 +111,34 @@ function getContent() {
         msg: `GET HTML FAIL:${o_HTML_TEXT_RAW.msg}`
       })
     }
-    let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);
-    let nodes = xpath.select('//*[@id="content_area"]', doc);
-    if (!nodes.length) {
+    try {
+      let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);
+      let nodes = xpath.select('//*[@id="content_area"]', doc);
+      if (!nodes.length) {
+        return resolve({
+          ok: false,
+          msg: `xpath select fail`
+        })
+      }
+      let ctts = [];
+      let images_tag = `<img src="${item.image.replace("https://", "http://")}">`
+      ctts.push(`<h2>${item.title}</h2>`);
+      ctts.push(images_tag);
+      ctts.push(nodes[0].textContent);
+      return resolve({
+        ok: true,
+        msg: "ok",
+        data: {
+          content: ctts.join("\n<br>")
+        }
+      })
+    } catch (e) {
       return resolve({
         ok: false,
-        msg: `xpath select fail`
+        msg: e
       })
     }
-    let ctts = [];
-    let images_tag = `<img src="${item.image.replace("https://","http://")}">`
-    ctts.push(`<h2>${item.title}</h2>`);
-    ctts.push(images_tag);
-    ctts.push(nodes[0].textContent);
-    return resolve({
-      ok: true,
-      msg: "ok",
-      data: {
-        content: ctts.join("\n<br>")
-      }
-    })
+
     debugger
   })
 }

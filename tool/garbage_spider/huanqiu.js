@@ -103,26 +103,34 @@ function getContent() {
         msg: `GET HTML FAIL:${o_HTML_TEXT_RAW.msg}`
       })
     }
-    let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);
-    let nodes = xpath.select('//article', doc);
-    if (!nodes.length) {
+    try {
+      let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);
+      let nodes = xpath.select('//article', doc);
+      if (!nodes.length) {
+        return resolve({
+          ok: false,
+          msg: `xpath select fail`
+        })
+      }
+      let ctts = [];
+      let images_tag = `<img src="http:${item.cover}">`
+      // ctts.push(`<h2>${item.title}</h2>`);
+      ctts.push(images_tag);
+      ctts.push(nodes[0].textContent);
+      return resolve({
+        ok: true,
+        msg: "ok",
+        data: {
+          content: ctts.join("\n<br>")
+        }
+      })
+    } catch (e) {
       return resolve({
         ok: false,
-        msg: `xpath select fail`
+        msg: e
       })
     }
-    let ctts = [];
-    let images_tag = `<img src="http:${item.cover}">`
-    // ctts.push(`<h2>${item.title}</h2>`);
-    ctts.push(images_tag);
-    ctts.push(nodes[0].textContent);
-    return resolve({
-      ok: true,
-      msg: "ok",
-      data: {
-        content: ctts.join("\n<br>")
-      }
-    })
+
     debugger
   })
 }

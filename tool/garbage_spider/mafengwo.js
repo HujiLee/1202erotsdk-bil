@@ -102,41 +102,40 @@ function getContent() {
         msg: `GET HTML FAIL:${o_HTML_TEXT_RAW.msg}`
       })
     }
-    let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);
-    let nodes = xpath.select('//*[@class="notes-detail"]', doc);
-    if (!nodes.length) {
+    try {
+      let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);
+      let nodes = xpath.select('//*[@class="notes-detail"]', doc);
+      if (!nodes.length) {
+        return resolve({
+          ok: false,
+          msg: `xpath select fail`
+        })
+      }
+      //优化一些nodes
+      let node = nodes[0];
+      let scNodes = xpath.select('//script', node).concat(xpath.select('//style', node));
+      for (let n of scNodes) {
+        node.removeChild(n)
+      }
+      // debugger
+      let ctts = [];
+      let images_tag = `<img src="${item.data.image.replace("https://", "http://")}">`
+      ctts.push(images_tag);
+      ctts.push(simplifyHtml(node.toString()));
+      return resolve({
+        ok: true,
+        msg: "ok",
+        data: {
+          content: ctts.join("\n<br>")
+        }
+      })
+    } catch (e) {
       return resolve({
         ok: false,
-        msg: `xpath select fail`
+        msg: e
       })
     }
-    //优化一些nodes
-    let node = nodes[0];
-    let scNodes = xpath.select('//script', node).concat(xpath.select('//style', node));
-    for(let n of scNodes){
-      node.removeChild(n)
-    }
-    // debugger
-    let ctts = [];
-    let images_tag = `<img src="${item.data.image.replace("https://", "http://")}">`
-    ctts.push(images_tag);
-    // let str = node.toString();
-    // while(str.match(/\s\s/)){
-    //   // debugger
-    //   str = str.replace(/\s\s/g," ")
-    // }
-    // while(str.match(/>\s</)){
-    //   str = str.replace(/>\s</g,"><")
-    // }
-    // debugger
-    ctts.push(simplifyHtml(node.toString()));
-    return resolve({
-      ok: true,
-      msg: "ok",
-      data: {
-        content: ctts.join("\n<br>")
-      }
-    })
+
     debugger
   })
 }
