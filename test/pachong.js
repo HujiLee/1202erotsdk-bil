@@ -1,7 +1,7 @@
-const libSouyong = require("../tool/garbage_spider/soyoung");
+const lib = require("../tool/garbage_spider/cctv");
 
-libSouyong.getContent().then(async xxx=>{
-  
-  let t2 = await libSouyong.getContent()
+lib.getContent().then(async xxx=>{
+  debugger
+  let t2 = await lib.getContent()
   debugger
 })
