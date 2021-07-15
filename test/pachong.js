@@ -1,4 +1,4 @@
-const lib = require("../tool/garbage_spider/mafengwo");
+const lib = require("../tool/garbage_spider/tuniu");
 
 lib.getContent().then(async xxx=>{
   debugger
