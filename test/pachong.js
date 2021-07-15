@@ -1,4 +1,4 @@
-const lib = require("../tool/garbage_spider/cctv");
+const lib = require("../tool/garbage_spider/huanqiu");
 
 lib.getContent().then(async xxx=>{
   debugger
