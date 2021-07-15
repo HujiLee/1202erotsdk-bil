@@ -40,6 +40,7 @@ function tupianCaozuo(htmlText) {
     }
     tn.tagName = "img";
     tn.setAttribute("src", imageLink);
+    tn.setAttribute("width",800)
     // tn.appendChild(img)
     tn.removeAttribute("data-img")
     // debugger
@@ -55,6 +56,7 @@ function tupianCaozuo(htmlText) {
         mfw.removeAttribute(attr)
       }
       mfw.setAttribute("src", imageLink);
+      mfw.setAttribute("width",800)
       for (let c of Array.from(mfw.childNodes)) {
         mfw.removeChild(c);
       }
@@ -67,7 +69,7 @@ function tupianCaozuo(htmlText) {
 
   //删除除了src href data-url外的所有属性
   let deleteAttrs = (root) => {
-    let safeAttrs = ['src', 'href', 'data-url']
+    let safeAttrs = ['src', 'href', 'data-url','width']
     if (root.attributes) {
       let attrs = Array.from(root.attributes).map(e => e.nodeName).filter(e => !safeAttrs.includes(e));
       if (attrs.length) {
