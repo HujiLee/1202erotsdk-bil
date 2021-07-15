@@ -44,7 +44,8 @@ function tupianCaozuo(htmlText) {
     tn.removeAttribute("data-img")
     // debugger
   }
-  debugger
+  // debugger
+  return doc.toString()
 }
 
 module.exports = simplify
