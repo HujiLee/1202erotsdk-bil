@@ -10,6 +10,7 @@ const axios = require("axios").default.create({
 const rn = require("random-number");
 const CommonAHG = require("../CommonAxerrHandlerGenerator").CommonAxerrHandlerGen;
 const axiosGetContent = require("./get_html_content");
+const simplifyHtml = require("./simplify_html");
 const BingganPool = {
   ccks: {},
   get cookies_as_header() {
@@ -102,7 +103,7 @@ function getContent() {
       })
     }
     let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);
-    let nodes = xpath.select('//*[@class="notes-wrapper"]', doc);
+    let nodes = xpath.select('//*[@class="notes-detail"]', doc);
     if (!nodes.length) {
       return resolve({
         ok: false,
@@ -119,16 +120,16 @@ function getContent() {
     let ctts = [];
     let images_tag = `<img src="${item.data.image.replace("https://", "http://")}">`
     ctts.push(images_tag);
-    let str = node.toString();
-    while(str.match(/\s\s/)){
-      // debugger
-      str = str.replace(/\s\s/g," ")
-    }
-    while(str.match(/>\s</)){
-      str = str.replace(/>\s</g,"><")
-    }
+    // let str = node.toString();
+    // while(str.match(/\s\s/)){
+    //   // debugger
+    //   str = str.replace(/\s\s/g," ")
+    // }
+    // while(str.match(/>\s</)){
+    //   str = str.replace(/>\s</g,"><")
+    // }
     // debugger
-    ctts.push(str);
+    ctts.push(simplifyHtml(node.toString()));
     return resolve({
       ok: true,
       msg: "ok",
