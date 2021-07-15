@@ -14,7 +14,7 @@ const BingganPool = {
   ccks: {},
   get cookies_as_header() {
     let arr = [];
-    for(let h in this.ccks){
+    for (let h in this.ccks) {
       // debugger
       arr.push(`${h}=${this.ccks[h]}`)
     }
@@ -49,15 +49,15 @@ function indexAjaxFeed(page = 1) {
       headers: {
         'x-requested-with': 'XMLHttpRequest',
         referer: 'https://m.soyoung.com/?cityId=218&cityName=%E8%B5%A3%E5%B7%9E%E5%B8%82',
-        cookie:BingganPool.cookies_as_header
+        cookie: BingganPool.cookies_as_header
       }
     }).then(axresp => {
       if (axresp.headers && axresp.headers["set-cookie"]) {
         let parsed = setCookieParser.parse(axresp.headers['set-cookie']);
         if (parsed && parsed.length) {
           let hasValue = parsed.filter(e => !!e.value);
-          hasValue.forEach(e=>{
-           BingganPool.ccks[e.name]=e.value
+          hasValue.forEach(e => {
+            BingganPool.ccks[e.name] = e.value
           })
         }
         BingganPool.cookies_as_header
@@ -103,26 +103,35 @@ function getContent() {
         msg: `GET HTML FAIL:${o_HTML_TEXT_RAW.msg}`
       })
     }
-    let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);
-    let nodes = xpath.select('//*[@id="contentBox"]', doc);
-    if (!nodes.length) {
+    try {
+      let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);//这里可能parse失败？
+      let nodes = xpath.select('//*[@id="contentBox"]', doc);
+      if (!nodes.length) {
+        return resolve({
+          ok: false,
+          msg: `xpath select fail`
+        })
+      }
+      let ctts = [];
+      let images_tag = item.data.img_list.map(e => `<img src="${e.u_z.replace("https://", "http://")}">`).join("\n<br>");
+      ctts.push(images_tag);
+      ctts.push(nodes[0].toString());
+      return resolve({
+        ok: true,
+        msg: "ok",
+        data: {
+          content: ctts.join("\n<br>")
+        }
+      })
+    } catch (e) {
+      debugger
       return resolve({
         ok: false,
-        msg: `xpath select fail`
+        msg: e
       })
     }
-    let ctts = [];
-    let images_tag = item.data.img_list.map(e => `<img src="${e.u_z.replace("https://","http://")}">`).join("\n<br>");
-    ctts.push(images_tag);
-    ctts.push(nodes[0].toString());
-    return resolve({
-      ok: true,
-      msg: "ok",
-      data: {
-        content: ctts.join("\n<br>")
-      }
-    })
-    debugger
+
+    // debugger
   })
 }
 
