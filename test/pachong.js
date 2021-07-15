@@ -1,4 +1,4 @@
-const lib = require("../tool/garbage_spider/tuniu");
+const lib = require("../tool/garbage_spider/soyoung");
 const fs = require("fs-extra");
 const path = require("path");
 const {Buffer} = require("buffer");
