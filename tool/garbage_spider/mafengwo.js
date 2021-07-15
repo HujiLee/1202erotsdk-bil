@@ -91,8 +91,9 @@ function getContent() {
       })
     }
     let item = o_feed.data.feed_list[0];
-    debugger
-    let link = `https://m.mafengwo.cn/i/${item.data.id}.html`
+    // debugger
+    let link = `http://m.mafengwo.cn/i/${item.data.id}.html?static_url="true`
+
     let o_HTML_TEXT_RAW = await axiosGetContent(axios, link);
     if (!o_HTML_TEXT_RAW.ok) {
       return resolve({
@@ -101,17 +102,33 @@ function getContent() {
       })
     }
     let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);
-    let nodes = xpath.select('//*[@id="_j_ardlistcnt"]', doc);
+    let nodes = xpath.select('//*[@class="notes-wrapper"]', doc);
     if (!nodes.length) {
       return resolve({
         ok: false,
         msg: `xpath select fail`
       })
     }
+    //优化一些nodes
+    let node = nodes[0];
+    let scNodes = xpath.select('//script', node).concat(xpath.select('//style', node));
+    for(let n of scNodes){
+      node.removeChild(n)
+    }
+    // debugger
     let ctts = [];
-    let images_tag =  `<img src="${item.data.image}">`
+    let images_tag = `<img src="${item.data.image.replace("https://", "http://")}">`
     ctts.push(images_tag);
-    ctts.push(nodes[0].toString());
+    let str = node.toString();
+    while(str.match(/\s\s/)){
+      // debugger
+      str = str.replace(/\s\s/g," ")
+    }
+    while(str.match(/>\s</)){
+      str = str.replace(/>\s</g,"><")
+    }
+    // debugger
+    ctts.push(str);
     return resolve({
       ok: true,
       msg: "ok",
