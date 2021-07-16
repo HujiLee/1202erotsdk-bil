@@ -9,29 +9,35 @@ const buffer = require("buffer");
 LIB.GetKdstoreByWpssid("V02STM1ligb43rsiOc7StUsChFaOj-I00aced2b5003d18ab1d").then(async x => {
   // debugger
   let kd = x.data.kdv2021;
-  let p1 = path.join(__dirname, "../tmp/tmp.rar")
-  let p2 = path.join(__dirname, "../tmp/90.zip");
-  let tasks = [p1].map(pp => {
-    let ev = kd.app.uploadRarFileTask(pp, 124664194208);
-    ev.on("error", (args) => {
-      debugger
-    });
-    ev.on("speed", (args) => {
-      // debugger
-      console.log(pp,args.speed_text)
-    });
-    ev.on("complete", (args) => {
-      console.log(pp,JSON.stringify(args))
-    });
-    ev.on("state_change", (msg) => {
-      console.log(pp,msg)
-    })
-  });
+  // let p1 = path.join(__dirname, "../tmp/tmp.rar")
+  // let p2 = path.join(__dirname, "../tmp/90.zip");
+  // let tasks = [p1].map(pp => {
+  //   let ev = kd.app.uploadRarFileTask(pp, 124664194208);
+  //   ev.on("error", (args) => {
+  //     debugger
+  //   });
+  //   ev.on("speed", (args) => {
+  //     // debugger
+  //     console.log(pp,args.speed_text)
+  //   });
+  //   ev.on("complete", (args) => {
+  //     console.log(pp,JSON.stringify(args))
+  //   });
+  //   ev.on("state_change", (msg) => {
+  //     console.log(pp,msg)
+  //   })
+  // });
 
   // let otest = await kd.APIV5_files_upload_create(0,"123.rar",555)
   // let otest2 = await kd.POST_WPSFILE_KSYUN()
 
-  // let o_test789 = await kd.app.getAvailableMhtFileid();
+  let o_test789 = await kd.app.getAvailableEmlFileid(124664194208);
+  let oCover = await kd.app.smallEmlToCoverFile(o_test789.data.fileid, o_test789.data.parent_id, o_test789.data.fname);
+  for (let i = 1; i <= 10; i++) {
+    let coverx = await kd.app.smallEmlToCoverFile(o_test789.data.fileid, o_test789.data.parent_id, o_test789.data.fname);
+    console.log(coverx.data.fver, coverx.data.fsize)
+  }
+  debugger
   // let o_his = await kd.APIV3_get_file_histories(o_test789.data.fileid)
   // debugger
   // let oCpver = await kd.app.smallMhtToCoverFile(o_test789.data.fileid, o_test789.data.parent_id,

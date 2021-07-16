@@ -37,7 +37,7 @@ function zuzhuangV2(htmlcontent) {
   * buf:Buffer
   * }}>}
   */
-async function randomMhtV2() {
+async function randomEml() {
   let libs = [require("./garbage_spider/cctv"),
   require("./garbage_spider/huanqiu"),
   require("./garbage_spider/tuniu"),
@@ -66,5 +66,5 @@ async function randomMhtV2() {
 
 
 module.exports = {
-  randomMhtV2
+  randomEml: randomEml
 }
