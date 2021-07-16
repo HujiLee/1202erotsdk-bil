@@ -104,7 +104,7 @@ function getContent() {
       })
     }
     try {
-      let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content);//这里可能parse失败？
+      let doc = domParser.parseFromString(o_HTML_TEXT_RAW.data.html_content,"text/html");//这里可能parse失败？
       let nodes = xpath.select('//*[@id="contentBox"]', doc);
       if (!nodes.length) {
         return resolve({
