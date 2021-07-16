@@ -22,6 +22,18 @@ function simplify(htmlText) {
     }
     // debugger
   }
+  while (true) {
+    let matched = str.match(/https\:\/\/p[0-9].itc.cn/);
+    debugger
+    if(matched&&matched.length){
+      debugger
+      str = str.replace(/https\:\/\/p[0-9].itc.cn/g, "http://p0.itc.cn")
+    }else{
+      break;
+    }
+    // debugger
+    
+  }
   // let doc = domParser.parseFromString(str);
   // debugger
 
@@ -31,8 +43,8 @@ function simplify(htmlText) {
 function tupianCaozuo(htmlText) {
   let doc = domParser.parseFromString(htmlText);
   let scripts = xpath.select('//script', doc);
-  if(scripts.length){
-    for(let sc of scripts){
+  if (scripts.length) {
+    for (let sc of scripts) {
       sc.parentNode.removeChild(sc)
       // debugger
     }
