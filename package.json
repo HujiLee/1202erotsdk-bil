@@ -3,6 +3,9 @@
   "version": "0.0.1alpha",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "kdtest":"bin/testHistory.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
