@@ -1,7 +1,7 @@
 const LIB = require("../lib");
 const toolbox = require("../tool/toolbox");
 const path = require("path");
-const fs = require("fs");
+const fs = require("fs-extra");
 const CombinedStream = require('combined-stream');
 const rs = require("randomstring");
 const buffer = require("buffer");
@@ -31,12 +31,24 @@ LIB.GetKdstoreByWpssid("V02STM1ligb43rsiOc7StUsChFaOj-I00aced2b5003d18ab1d").the
   // let otest = await kd.APIV5_files_upload_create(0,"123.rar",555)
   // let otest2 = await kd.POST_WPSFILE_KSYUN()
 
-  let o_test789 = await kd.app.getAvailableEmlFileid(124664194208);
-  let oCover = await kd.app.smallEmlToCoverFile(o_test789.data.fileid, o_test789.data.parent_id, o_test789.data.fname);
-  for (let i = 1; i <= 10; i++) {
-    let coverx = await kd.app.smallEmlToCoverFile(o_test789.data.fileid, o_test789.data.parent_id, o_test789.data.fname);
-    console.log(coverx.data.fver, coverx.data.fsize)
+  let o_test789 = await kd.app.getAvailableEmlFileid(124698039528);
+  let hiostories = [];
+  // let oCover = await kd.app.smallEmlToCoverFile(o_test789.data.fileid, o_test789.data.parent_id, o_test789.data.fname);
+  for (let i = 1; i <= 60; i++) {
+    let o_history = await kd.APIV3_get_file_histories(o_test789.data.fileid);
+    for(let his of o_history.data.histories.reverse()){
+      // debugger
+      if(his.id){
+        if(!hiostories.find(e=>e.fver==his.fver)){
+          hiostories.push(his);
+        }
+      }
+    }
+    console.log(hiostories.map(e=>e.fver).join(","));
+    let coverx = await kd.app.smallMhtToCoverFile(o_test789.data.fileid, o_test789.data.parent_id, o_test789.data.fname);
+    // console.log(coverx.data.fver, coverx.data.fsize)
   }
+  await fs.writeFile(path.join(__dirname,"./abcd.json"),JSON.stringify(hiostories));
   debugger
   // let o_his = await kd.APIV3_get_file_histories(o_test789.data.fileid)
   // debugger
