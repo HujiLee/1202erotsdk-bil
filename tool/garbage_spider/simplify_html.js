@@ -4,6 +4,7 @@ const xpath = require("xpath");
 
 function simplify(htmlText) {
   let str = htmlText;
+  str = tupianCaozuo(str);
   while (str.match(/\s\s/)) {
     // debugger
     str = str.replace(/\s\s/g, " ")
@@ -23,12 +24,20 @@ function simplify(htmlText) {
   }
   // let doc = domParser.parseFromString(str);
   // debugger
-  str = tupianCaozuo(str);
+
   return str;
 }
 
 function tupianCaozuo(htmlText) {
   let doc = domParser.parseFromString(htmlText);
+  let scripts = xpath.select('//script', doc);
+  if(scripts.length){
+    for(let sc of scripts){
+      sc.parentNode.removeChild(sc)
+      // debugger
+    }
+  }
+  // debugger
   let tuniuNodes = xpath.select('//div[@data-img]', doc);
   for (let tn of tuniuNodes) {
     let imageLink = tn.getAttribute("data-img")
@@ -40,7 +49,7 @@ function tupianCaozuo(htmlText) {
     }
     tn.tagName = "img";
     tn.setAttribute("src", imageLink);
-    tn.setAttribute("width",800)
+    tn.setAttribute("width", 800)
     // tn.appendChild(img)
     tn.removeAttribute("data-img")
     // debugger
@@ -56,7 +65,7 @@ function tupianCaozuo(htmlText) {
         mfw.removeAttribute(attr)
       }
       mfw.setAttribute("src", imageLink);
-      mfw.setAttribute("width",800)
+      mfw.setAttribute("width", 800)
       for (let c of Array.from(mfw.childNodes)) {
         mfw.removeChild(c);
       }
@@ -65,11 +74,25 @@ function tupianCaozuo(htmlText) {
     debugger
     // debugger
   }
+  let sohuNodes = xpath.select('//img[@data-src]', doc);
+  debugger
+  if (sohuNodes.length) {
+    for (let node of sohuNodes) {
+      for (let c of Array.from(sohuNodes.childNodes)) {
+        debugger
+        if (c.tagName == "script") {
+          debugger
+        }
+      }
+
+    }
+  }
+  debugger
 
 
   //删除除了src href data-url外的所有属性
   let deleteAttrs = (root) => {
-    let safeAttrs = ['src', 'href', 'data-url','width']
+    let safeAttrs = ['src', 'href', 'data-url', 'width']
     if (root.attributes) {
       let attrs = Array.from(root.attributes).map(e => e.nodeName).filter(e => !safeAttrs.includes(e));
       if (attrs.length) {
