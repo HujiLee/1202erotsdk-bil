@@ -74,19 +74,19 @@ function tupianCaozuo(htmlText) {
     debugger
     // debugger
   }
-  let sohuNodes = xpath.select('//img[@data-src]', doc);
-  debugger
-  if (sohuNodes.length) {
-    for (let node of sohuNodes) {
-      for (let c of Array.from(sohuNodes.childNodes)) {
-        debugger
-        if (c.tagName == "script") {
-          debugger
-        }
-      }
+  // let sohuNodes = xpath.select('//img[@data-src]', doc);
+  // debugger
+  // if (sohuNodes.length) {
+  //   for (let node of sohuNodes) {
+  //     for (let c of Array.from(sohuNodes.childNodes)) {
+  //       debugger
+  //       if (c.tagName == "script") {
+  //         debugger
+  //       }
+  //     }
 
-    }
-  }
+  //   }
+  // }
   debugger
 
 

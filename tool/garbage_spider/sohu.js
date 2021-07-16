@@ -1,7 +1,13 @@
 const xpath = require("xpath");
 const setCookieParser = require("set-cookie-parser");
 const DOMParser = require("xmldom").DOMParser;
-let domParser = new DOMParser();
+let domParser = new DOMParser({
+  errorHandler: {
+    error: () => { },
+    warning: () => { },
+    fatalError: () => { }
+  }
+});
 const axios = require("axios").default.create({
   headers: {
     'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'
@@ -94,7 +100,17 @@ function getContent() {
         msg: `get feed list fail:${o_feed.msg}`
       })
     }
-    let item = o_feed.data.feed_list.filter(x => x.type == 2)[0];
+    let ok_list = o_feed.data.feed_list.filter(x => {
+      if (x.adType) return false;
+      if (!x.url) return false;
+      if (x.imageInfoList.length&&x.type==2) {
+        if (x.title && x.brief) {
+          return true
+        }
+      }
+      return false;
+    })
+    let item = ok_list[0];
     let link = `https://m.sohu.com${item.url}/`
     let o_HTML_TEXT_RAW = await axiosGetContent(axios, link);
     if (!o_HTML_TEXT_RAW.ok) {
@@ -115,7 +131,7 @@ function getContent() {
       let ctts = [];
       // let images_tag = item.data.img_list.map(e => `<img width=800 src="${e.u_z.replace("https://", "http://")}">`).join("\n<br>");
       // ctts.push(images_tag);
-      ctts.push(`<h5>${item.title}</h5>`)
+      ctts.push(`<h4>${item.title}</h4>`)
       if (Array.isArray(item.imageInfoList)) {
         let images_tag = item.imageInfoList.map(e => `<img width="800" src="${e.url.replace('https://', 'http://')}">`).join("\n<br>");
         ctts.push(images_tag);
@@ -131,6 +147,7 @@ function getContent() {
       })
     } catch (e) {
       debugger
+      console.log(e);
       return resolve({
         ok: false,
         msg: e
