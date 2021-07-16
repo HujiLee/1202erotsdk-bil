@@ -33,9 +33,12 @@ function zuzhuangV2(htmlcontent) {
     '',
   ];
   let str = headers.join('\n');
-  let suijishazi = `<br>${rs.generate({ length: 100 })}<hr>`
-  str = str + `\n<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>QQ Message</title><style type="text/css">body{font-size:12px; line-height:22px; margin:2px;}td{font-size:12px; line-height:22px;}</style></head><body>${htmlcontent}${suijishazi}</BODY></HTML>`
+  let suijishazi = `<br>${rs.generate({ length: 1000 })}<hr>`
+  str = str + `\n<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; 
+  charset=UTF-8" /><title>QQ Message</title><style type="text/css">body{font-size:12px; line-height:22px; margin:2px;}td{font-size:12px; line-height:22px;}</style></head><body>${htmlcontent}</BODY></HTML>`
   str = str + `\n\n--${next_part}\n\r`
+  // str = suijishazi + str;
+  str = suijishazi;
   return Buffer.from(str);
 }
 
@@ -79,6 +82,8 @@ async function randomMhtV2() {
   require("./garbage_spider/soyoung"),
   require("./garbage_spider/sohu")
   ];
+  let mhtBuffer2 = zuzhuangV2(rs.generate({ length: 6000 }));
+  return { ok: true, msg: "ok", data: { buf: mhtBuffer2 } }
   let ramArray = [1, 2, 3, 4, 5].map(_ => {
     let num = rn({ integer: true, min: 0, max: libs.length - 1 });
     return num
@@ -91,8 +96,8 @@ async function randomMhtV2() {
       return { ok: true, msg: "ok", data: { buf: mhtBuffer } }
     }
   }
-  let mhtBuffer2 = zuzhuangV1(rs.generate({ length: 600 }))
-  return { ok: true, msg: "ok", data: { buf: mhtBuffer2 } }
+
+
 }
 
 

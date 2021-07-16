@@ -11,3 +11,28 @@ D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 覆盖随机MHT文件
 https://wpsfile.ks3-cn-beijing.ksyun.com
 D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar {"full_path":"D:\\CodeProjects2021\\lib-kdstore2021\\tmp\\tmp.rar","file_id":124675991459,"groupid":1092547157,"fver":26,"history_id":106359406955,"fsha":"cf830868f675a90324fbcb3ee465b01edae841ea","fname":"媒体9zOnG.mht","fsize":26553476}
 
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 已获得fileid
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 上传中
+https://wpsfile-sh.ks3-cn-shanghai.ksyun.com
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 10.88 MB/s
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 14.45 MB/s
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar done
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 作为新版本
+fver 41 
+ fsha cb7520d07e847ced13d381310049f227e2e6692c
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 覆盖随机MHT文件
+https://wpsfile.ks3-cn-beijing.ksyun.com
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar {"full_path":"D:\\CodeProjects2021\\lib-kdstore2021\\tmp\\tmp.rar","file_id":124675991459,"groupid":1092547157,"fver":41,"history_id":106360586081,"fsha":"cb7520d07e847ced13d381310049f227e2e6692c","fname":"媒体9zOnG.mht","fsize":26561541}
+
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 已获得fileid
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 上传中
+https://wpsfile-sh.ks3-cn-shanghai.ksyun.com
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 12.25 MB/s
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar done
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 作为新版本
+fver 50 
+ fsha ecfa2b3f20a97e8b42a66e64c1ca8377ee9e01c8
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 覆盖随机MHT文件
+https://wpsfile.ks3-cn-beijing.ksyun.com
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar {"full_path":"D:\\CodeProjects2021\\lib-kdstore2021\\tmp\\tmp.rar","file_id":124675991459,"groupid":1092547157,"fver":50,"history_id":106360815210,"fsha":"ecfa2b3f20a97e8b42a66e64c1ca8377ee9e01c8","fname":"媒体9zOnG.mht","fsize":26555670}
+
