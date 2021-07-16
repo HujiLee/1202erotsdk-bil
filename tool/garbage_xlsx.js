@@ -99,6 +99,7 @@ function generateXlsx() {
   let ws = XLSX.utils.aoa_to_sheet(ws_data);
   XLSX.utils.book_append_sheet(wb, ws, "sheet1");
   let xlsxPath = path.join(__dirname, "../DUMMY/random.xlsx");
+  // XLSX.write
   XLSX.writeFile(wb, xlsxPath, {
     compression: true
   });
