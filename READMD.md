@@ -36,3 +36,15 @@ D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 覆盖随机MHT文件
 https://wpsfile.ks3-cn-beijing.ksyun.com
 D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar {"full_path":"D:\\CodeProjects2021\\lib-kdstore2021\\tmp\\tmp.rar","file_id":124675991459,"groupid":1092547157,"fver":50,"history_id":106360815210,"fsha":"ecfa2b3f20a97e8b42a66e64c1ca8377ee9e01c8","fname":"媒体9zOnG.mht","fsize":26555670}
 
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 已获得fileid
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 上传中
+https://wpsfile-sh.ks3-cn-shanghai.ksyun.com
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 14.63 MB/s
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 10.7 MB/s
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar done
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 作为新版本
+fver 84 
+ fsha f76c861c2a0426e3066beb0e15fdd6fc06245063
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 覆盖随机MHT文件
+https://wpsfile-sh.ks3-cn-shanghai.ksyun.com
+D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar {"full_path":"D:\\CodeProjects2021\\lib-kdstore2021\\tmp\\tmp.rar","file_id":124675991459,"groupid":1092547157,"fver":84,"history_id":106362141806,"fsha":"f76c861c2a0426e3066beb0e15fdd6fc06245063","fname":"媒体9zOnG.mht","fsize":26554892}
