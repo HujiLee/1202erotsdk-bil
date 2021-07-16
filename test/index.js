@@ -11,7 +11,10 @@ LIB.GetKdstoreByWpssid("V02STM1ligb43rsiOc7StUsChFaOj-I00aced2b5003d18ab1d").the
   let kd = x.data.kdv2021;
   // let otest = await kd.APIV5_files_upload_create(0,"123.rar",555)
   // let otest2 = await kd.POST_WPSFILE_KSYUN()
+  
   let o_test789 = await kd.app.getAvailableMhtFileid();
+  let o_his = await kd.APIV3_get_file_histories(o_test789.data.fileid)
+  debugger
   let oCpver = await kd.app.smallMhtToCoverFile(o_test789.data.fileid, o_test789.data.parent_id,
     o_test789.data.fname);
   debugger
