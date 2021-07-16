@@ -7,6 +7,18 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "BINTEST",
+      "program": "${workspaceFolder}/bin/testHistory.js",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "args": [
+        "F:\\tmp\\*"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "/test/index.js",
       "skipFiles": [
         "<node_internals>/**"
@@ -21,6 +33,7 @@
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/test/pachong.js"
-    }
+    },
+
   ]
 }
