@@ -12,8 +12,10 @@ LIB.GetKdstoreByWpssid("V02STM1ligb43rsiOc7StUsChFaOj-I00aced2b5003d18ab1d").the
   // let otest = await kd.APIV5_files_upload_create(0,"123.rar",555)
   // let otest2 = await kd.POST_WPSFILE_KSYUN()
   let o_test789 = await kd.app.getAvailableMhtFileid();
-debugger
-  return 
+  let oCpver = await kd.app.smallMhtToCoverFile(o_test789.data.fileid, o_test789.data.parent_id,
+    o_test789.data.fname);
+  debugger
+  return
   let cStream = CombinedStream.create();
   let p1 = path.join(__dirname, "../tmp/02.rar")
   let p2 = path.join(__dirname, "../tmp/90.mht")
