@@ -24,9 +24,9 @@ function simplify(htmlText) {
   }
   while (true) {
     let matched = str.match(/https\:\/\/p[0-9].itc.cn/);
-    debugger
+    // debugger
     if(matched&&matched.length){
-      debugger
+      // debugger
       str = str.replace(/https\:\/\/p[0-9].itc.cn/g, "http://p0.itc.cn")
     }else{
       break;
@@ -99,7 +99,7 @@ function tupianCaozuo(htmlText) {
 
   //   }
   // }
-  debugger
+  // debugger
 
 
   //删除除了src href data-url外的所有属性
