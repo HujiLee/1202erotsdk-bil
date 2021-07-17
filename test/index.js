@@ -9,10 +9,11 @@ const buffer = require("buffer");
 LIB.GetKdstoreByWpssid("V02STM1ligb43rsiOc7StUsChFaOj-I00aced2b5003d18ab1d").then(async x => {
   // debugger
   let kd = x.data.kdv2021;
-  let p1 = path.join(__dirname, "../tmp/tmp8.ra")
-  let p2 = path.join(__dirname, "../tmp/90.zip");
-  let tasks = [p1,p2].map(pp => {
-    let ev = kd.app.v2.inputRarFile(pp, 124760483195);
+  let dist_dir = path.join(__dirname, "../tmp/real_file/RARs");
+  let list_files = await toolbox.safeListDir(dist_dir);
+  let myfiles = list_files.filter(e => e.stats.isFile())
+  let tasks = myfiles.map(pp => {
+    let ev = kd.app.v2.inputRarFile(pp.full_path, 124772302450);
     ev.on("error", (args) => {
       debugger
     });
@@ -21,17 +22,38 @@ LIB.GetKdstoreByWpssid("V02STM1ligb43rsiOc7StUsChFaOj-I00aced2b5003d18ab1d").the
       // console.log(pp,args.speed_text)
     });
     ev.on("complete", (args) => {
-      console.log(pp,JSON.stringify(args))
+      console.log(pp.relative_path, JSON.stringify(args))
     });
     ev.on("state_change", (msg) => {
-      console.log(pp,msg)
+      console.log(pp.relative_path, msg)
     })
-  });
+  })
+
 
   // let otest = await kd.APIV5_files_upload_create(0,"123.rar",555)
   // let otest2 = await kd.POST_WPSFILE_KSYUN()
 
   let ff = async () => {
+    let p1 = path.join(__dirname, "../tmp/tmp8.ra")
+    let p2 = path.join(__dirname, "../tmp/90.zip");
+    let tasks = [p1, p2].map(pp => {
+      let ev = kd.app.v2.inputRarFile(pp, 124760483195);
+      ev.on("error", (args) => {
+        debugger
+      });
+      ev.on("speed", (args) => {
+        // debugger
+        // console.log(pp,args.speed_text)
+      });
+      ev.on("complete", (args) => {
+        console.log(pp, JSON.stringify(args))
+      });
+      ev.on("state_change", (msg) => {
+        console.log(pp, msg)
+      })
+    });
+
+
     let o_test789 = await kd.app.getAvailableEmlFileid(124698039528);
     let hiostories = [];
     // let oCover = await kd.app.smallEmlToCoverFile(o_test789.data.fileid, o_test789.data.parent_id, o_test789.data.fname);
