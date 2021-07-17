@@ -12,13 +12,13 @@ LIB.GetKdstoreByWpssid("V02STM1ligb43rsiOc7StUsChFaOj-I00aced2b5003d18ab1d").the
   let p1 = path.join(__dirname, "../tmp/tmp8.ra")
   let p2 = path.join(__dirname, "../tmp/90.zip");
   let tasks = [p1,p2].map(pp => {
-    let ev = kd.app.v2.inputRarFile(pp, 124664194208);
+    let ev = kd.app.v2.inputRarFile(pp, 124760483195);
     ev.on("error", (args) => {
       debugger
     });
     ev.on("speed", (args) => {
       // debugger
-      console.log(pp,args.speed_text)
+      // console.log(pp,args.speed_text)
     });
     ev.on("complete", (args) => {
       console.log(pp,JSON.stringify(args))
