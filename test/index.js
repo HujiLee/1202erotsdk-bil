@@ -9,10 +9,10 @@ const buffer = require("buffer");
 LIB.GetKdstoreByWpssid("V02STM1ligb43rsiOc7StUsChFaOj-I00aced2b5003d18ab1d").then(async x => {
   // debugger
   let kd = x.data.kdv2021;
-  let p1 = path.join(__dirname, "../tmp/tmp.rar")
+  let p1 = path.join(__dirname, "../tmp/tmp8.ra")
   let p2 = path.join(__dirname, "../tmp/90.zip");
   let tasks = [p1,p2].map(pp => {
-    let ev = kd.app.uploadRarFileTask(pp, 124664194208);
+    let ev = kd.app.v2.inputRarFile(pp, 124664194208);
     ev.on("error", (args) => {
       debugger
     });
