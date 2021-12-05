@@ -6,9 +6,11 @@ const CombinedStream = require('combined-stream');
 const rs = require("randomstring");
 const buffer = require("buffer");
 
-LIB.GetKdstoreByWpssid("V02STM1ligb43rsiOc7StUsChFaOj-I00aced2b5003d18ab1d").then(async x => {
-  // debugger
+LIB.GetKdstoreByWpssid("V02S2W_2E4DqgA19ZhRJs2B7EAW4NtY00a1449b3004da54f06").then(async x => {
+  debugger
   let kd = x.data.kdv2021;
+  let otestest = await kd.APIV5_history_set_tag(145218513035,1,"");
+  debugger
   let dist_dir = path.join(__dirname, "../tmp/real_file/RARs");
   let list_files = await toolbox.safeListDir(dist_dir);
   let myfiles = list_files.filter(e => e.stats.isFile())
