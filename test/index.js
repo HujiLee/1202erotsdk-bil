@@ -7,9 +7,10 @@ const rs = require("randomstring");
 const buffer = require("buffer");
 
 LIB.GetKdstoreByWpssid("V02S2W_2E4DqgA19ZhRJs2B7EAW4NtY00a1449b3004da54f06").then(async x => {
-  debugger
+  // debugger
   let kd = x.data.kdv2021;
-  let otestest = await kd.APIV5_history_set_tag(145218513035,1,"");
+  let i_test = await kd.app.v2.uploadUploadifiedDir(path.join(__dirname, "../tmp/1206"))
+  // let otestest = await kd.APIV5_history_set_tag(145218513035,1,"");
   debugger
   let dist_dir = path.join(__dirname, "../tmp/real_file/RARs");
   let list_files = await toolbox.safeListDir(dist_dir);
