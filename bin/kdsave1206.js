@@ -30,7 +30,7 @@ getUploadPaths(cwd, sub).then(async avai_paths => {
     if (upload.ok) {
       console.log("OKDONE", ap.full_path)
     } else {
-      console.log("FAIL=", ap.full_path)
+      console.log("FAIL=", ap.full_path, upload.msg)
     }
     cb();
   });
