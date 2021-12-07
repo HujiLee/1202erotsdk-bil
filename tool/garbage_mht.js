@@ -53,7 +53,7 @@ async function randomMht() {
     require("./garbage_spider/huanqiu"),
     // require("./garbage_spider/tuniu"),
     require("./garbage_spider/soyoung"),
-    require("./garbage_spider/sohu")
+    // require("./garbage_spider/sohu")//暂时不要使用sohu有bug
   ];
   let ramArray = [1, 2, 3, 4, 5].map(_ => {
     let num = rn({ integer: true, min: 0, max: libs.length - 1 });

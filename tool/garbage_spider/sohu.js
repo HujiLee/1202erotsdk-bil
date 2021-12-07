@@ -110,7 +110,7 @@ function getContent() {
       }
       return false;
     })
-    let item = ok_list[rn({integer:true,min:0,max:ok_list.length-1})];
+    let item = ok_list[rn({integer:true,min:0,max:ok_list.length-1})];//这里有可能ok_list的length为0
     let link = `https://m.sohu.com${item.url}/`
     let o_HTML_TEXT_RAW = await axiosGetContent(axios, link);
     if (!o_HTML_TEXT_RAW.ok) {
