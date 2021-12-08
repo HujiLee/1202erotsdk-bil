@@ -6,7 +6,7 @@
   "bin": {
     "testLibKd": "bin/testHistory.js",
     "kdsave1206":"bin/kdsave1206.js",
-    "HistoryIdComplement":"bin/HistoryIdComplement.js"
+    "historyIdComplement":"bin/HistoryIdComplement.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
