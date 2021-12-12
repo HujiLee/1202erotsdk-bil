@@ -5,8 +5,9 @@
   "main": "index.js",
   "bin": {
     "testLibKd": "bin/testHistory.js",
-    "kdsave1206":"bin/kdsave1206.js",
-    "historyIdComplement":"bin/HistoryIdComplement.js"
+    "kdsave1206": "bin/kdsave1206.js",
+    "historyIdComplement": "bin/HistoryIdComplement.js",
+    "removeDuoyuPics":"bin/removeDuoyuPics.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,6 +26,7 @@
     "json-beautify": "^1.1.1",
     "kuroshiro": "^1.1.2",
     "lodash.union": "^4.6.0",
+    "nodemailer": "^6.7.2",
     "pinyin": "^2.9.1",
     "promise-queue": "^2.2.5",
     "random-number": "^0.0.9",
