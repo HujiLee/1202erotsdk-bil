@@ -16,7 +16,7 @@ const LIB = require("../lib");
 
 getUploadPaths(cwd, sub).then(async avai_paths => {
   let tasks = avai_paths.filter(e => e.stats.isDirectory()).map(ap => async cb => {
-    let olist = await Toolbox.safeListDir();
+    let olist = await Toolbox.safeListDir(ap.full_path);
     let pics = olist.filter(e => {
       let picpath = e.relative_path.toLowerCase();
       if (picpath.startsWith("保留-")) {
