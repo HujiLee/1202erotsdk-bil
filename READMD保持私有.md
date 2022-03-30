@@ -1,3 +1,7 @@
+2022年3月30日22:11:39
+迁移到coding并且记得保持私有状态！！
+fWetzcWrCr:7cbf5b03a03e58994bbf083fd410fd63ad6f81f9
+
 D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 已获得fileid
 D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 上传中
 https://wpsfile-sh.ks3-cn-shanghai.ksyun.com
