@@ -100,7 +100,8 @@ function getContent() {
         msg: `get feed list fail:${o_feed.msg}`
       })
     }
-    let item = o_feed.data.feed_list[0];
+    let item = o_feed.data.feed_list.filter(e=>e.data&&e.data.id)[0];
+    // debugger
     let link = `https://m.soyoung.com/p${item.data.id}/`
     let o_HTML_TEXT_RAW = await axiosGetContent(axios, link);
     if (!o_HTML_TEXT_RAW.ok) {
