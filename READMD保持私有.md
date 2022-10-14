@@ -57,3 +57,7 @@ cnpm i git+https://fWetzcWrCr:7cbf5b03a03e58994bbf083fd410fd63ad6f81f9@e.coding.
 
 我操了 怎么总是因为一部分的TIMEOUT而失败啊
 FAIL= G:\toup\【虎牙超新星联赛S1】8月6日 手机总决赛Day1[主视角 huyaraw] put as new ver fail:connect ETIMEDOUT 121.36.2.168:443
+---
+2022年10月14日09:07:51
+https://wpsfile-sh.ks3-cn-shanghai.ksyun.com
+不知道原来的 https://wpsfile.ks3-cn-beijing.ksyun.com 怎么没了 变成了个奇怪的新地址
