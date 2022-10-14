@@ -52,3 +52,8 @@ fver 84
 D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar 覆盖随机MHT文件
 https://wpsfile-sh.ks3-cn-shanghai.ksyun.com
 D:\CodeProjects2021\lib-kdstore2021\tmp\tmp.rar {"full_path":"D:\\CodeProjects2021\\lib-kdstore2021\\tmp\\tmp.rar","file_id":124675991459,"groupid":1092547157,"fver":84,"history_id":106362141806,"fsha":"f76c861c2a0426e3066beb0e15fdd6fc06245063","fname":"媒体9zOnG.mht","fsize":26554892}
+
+cnpm i git+https://fWetzcWrCr:7cbf5b03a03e58994bbf083fd410fd63ad6f81f9@e.coding.net/majo/file-uploads/lib-kdstore2021.git -g
+
+我操了 怎么总是因为一部分的TIMEOUT而失败啊
+FAIL= G:\toup\【虎牙超新星联赛S1】8月6日 手机总决赛Day1[主视角 huyaraw] put as new ver fail:connect ETIMEDOUT 121.36.2.168:443
