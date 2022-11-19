@@ -101,6 +101,12 @@ function getContent() {
       })
     }
     let item = o_feed.data.feed_list.filter(e=>e.data&&e.data.id)[0];
+    if(!item){
+      return resolve({
+        ok:false,
+        msg:`cant find item${item}`
+      })
+    }
     // debugger
     let link = `https://m.soyoung.com/p${item.data.id}/`
     let o_HTML_TEXT_RAW = await axiosGetContent(axios, link);
