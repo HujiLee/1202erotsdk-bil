@@ -41,7 +41,7 @@ getUploadPaths(cwd, sub).then(async avai_paths => {
       debugger
     }
     rl.write(`dirname is ${datakdsaved.dir_name}\n`);
-    rl.write(`files count:${datakdsaved.files.length}`);
+    rl.write(`files count:${datakdsaved.files.length}\n`);
     await download(datakdsaved);
     // debugger
     Lv1CB();
@@ -83,6 +83,10 @@ getUploadPaths(cwd, sub).then(async avai_paths => {
           console.log(file.realname, err);
           Lv2CB();
         })
+        dlmachine.on("start", (err) => {
+          // console.log(file.realname, "finished!");
+          process.stdout.write(`${file.realname}:`, 'utf-8')
+        });
         dlmachine.on("end", (err) => {
           console.log(file.realname, "finished!");
           Lv2CB();
@@ -91,17 +95,21 @@ getUploadPaths(cwd, sub).then(async avai_paths => {
           // rl.write(file.realname + "\n");
           // rl.c
           // debugger
+          let progressStr = `${parseFloat(progress).toFixed(5)}`
+          // debugger
           rl.cursor
-          readline.clearLine(process.stdout,-1);
-          readline.cursorTo(process.stdout, 0, fileIndex + 5);
-          process.stdout.write(`${file.realname},${progress}`, 'utf-8')
+          // readline.clearLine(process.stdout,-1);
+          
+          // readline.cursorTo(process.stdout, 0, fileIndex + 5);
+          process.stdout.write(`${progressStr}`, 'utf-8');
+          readline.moveCursor(process.stdout, 0-progressStr.length, 0);
           // console.log()
         });
 
         // debugger
       });
       runParallel(dltasks, 1, () => {
-        debugger
+        resolve();
       })
       // debugger
     })
