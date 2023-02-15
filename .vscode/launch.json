@@ -8,7 +8,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "BINTEST",
+      "name": "BINTEST history",
       "program": "${workspaceFolder}/bin/HistoryIdComplement.js",
       "skipFiles": [
         "<node_internals>/**"
@@ -17,6 +17,20 @@
         "./少女映画103套27G_RARED.kdsave.json"
       ],
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "BINTEST download",
+      "program": "${workspaceFolder}/bin/kddownload0215.js",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "args": [
+        "./tmp/RSGRPG.kdsave.json.txt"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
     },
     {
       "type": "node",
