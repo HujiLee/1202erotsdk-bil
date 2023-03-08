@@ -35,6 +35,21 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "BINTEST mkvmerge",
+      "program": "${workspaceFolder}/bin/concatMkv.js",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "args": [
+        "X:\\4K版PEL\\0519",
+        "X:\\4K版PEL\\0520"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "/test/index.js",
       "skipFiles": [
         "<node_internals>/**"

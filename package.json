@@ -8,7 +8,8 @@
     "kdsave1206": "bin/kdsave1206.js",
     "kddownload0215": "bin/kddownload0215.js",
     "historyIdComplement": "bin/HistoryIdComplement.js",
-    "removeDuoyuPics": "bin/removeDuoyuPics.js"
+    "removeDuoyuPics": "bin/removeDuoyuPics.js",
+    "concatMergeMkv": "bin/concatMkv.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
