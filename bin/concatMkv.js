@@ -19,16 +19,21 @@ getUploadPaths(cwd, sub).then(async avai_paths => {
   let allCmds = []
   for (let ap of aps) {
     let olist = await Toolbox.safeListDir(ap.full_path);
-    let notMp4 = olist.filter(e => e.stats.isDirectory() || !e.relative_path.endsWith(".mp4"));
-    if (notMp4.length) {
-      console.log("必须只包含MP4file", ap.full_path);
-    }
+    // let notMp4 = olist.filter(e => e.stats.isDirectory() || !e.relative_path.endsWith(".mp4"));
+    // if (notMp4.length) {
+    //   console.log("必须只包含MP4file", ap.full_path);
+    // }
+    olist = olist.filter(e => {
+      return e.relative_path.endsWith(".mp4")
+        || e.relative_path.endsWith(".mkv")
+        || e.relative_path.endsWith(".flv")
+    })
     let sorted = olist.sort((a, b) => a.relative_path.localeCompare(b.relative_path));
     let MkvName = 'Merged' + sorted[0].relative_path.substr(sorted[0].relative_path.length - 20, 16) + ".mkv";
-    let commandStr = `mkvmerge -o '${path.join(ap.full_path,MkvName)}' ${sorted.map(e => "'" + e.full_path + "'").join(" + ")};`
+    let commandStr = `mkvmerge -o '${path.join(ap.full_path, MkvName)}' ${sorted.map(e => "'" + e.full_path + "'").join(" + ")};`
     allCmds.push(commandStr);
   }
   // debugger
-  fs.writeFile(path.join(cwd,"allMerge"+Date.now()+".sh"),allCmds.join("\n"));
+  fs.writeFile(path.join(cwd, "allMerge" + Date.now() + ".sh"), allCmds.join("\n"));
 
 })
